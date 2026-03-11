@@ -13,21 +13,35 @@ btnEnvoyer.addEventListener('click', () => {
     return;
   }
 
-  // Ouvre le client email avec les infos pré-remplies
-  const mailto = `mailto:tychiquelamagie@gmail.com?subject=${encodeURIComponent(sujet + ' — de ' + nom)}&body=${encodeURIComponent('Nom : ' + nom + '\nEmail : ' + email + '\n\nMessage :\n' + message)}`;
-  window.location.href = mailto;
+  // Envoie le message via Formspree
+  btnEnvoyer.textContent = 'Envoi en cours...';
+  btnEnvoyer.disabled = true;
 
-  // Affiche le message de succès
-  formSuccess.style.display = 'block';
-
-  // Vide le formulaire
-  document.getElementById('nom').value = '';
-  document.getElementById('email').value = '';
-  document.getElementById('sujet').value = '';
-  document.getElementById('message').value = '';
-
-  // Cache le message après 5 secondes
-  setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
+  fetch('https://formspree.io/f/maqpodjn', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nom, email, sujet, message })
+  })
+  .then(res => {
+    if (res.ok) {
+      // Succès
+      formSuccess.style.display = 'block';
+      document.getElementById('nom').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('sujet').value = '';
+      document.getElementById('message').value = '';
+      setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
+    } else {
+      alert('❌ Une erreur est survenue. Réessaie ou contacte-moi directement.');
+    }
+  })
+  .catch(() => {
+    alert('❌ Connexion impossible. Vérifie ta connexion internet.');
+  })
+  .finally(() => {
+    btnEnvoyer.textContent = 'Envoyer le message 📨';
+    btnEnvoyer.disabled = false;
+  });
 });
 
 // ── REVEAL ON SCROLL ──
