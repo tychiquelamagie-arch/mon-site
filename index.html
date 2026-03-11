@@ -35,9 +35,9 @@
       <div class="hero-content">
         <div class="hero-tag">✦ Portfolio Professionnel</div>
         <h1 class="hero-title">
-          Bonjour, je suis<br>
-          <span>Tychique Emmanuel</span><br>
-          Étudiant en Informatique
+        Bonjour , c'est    <br>
+          <span> Tychique Emmanuel </span><br>
+        Etudiant en informatique
         </h1>
         <p class="hero-desc">
           Étudiant ivoirien en licence en sciences informatiques, passionné par les nouvelles
@@ -198,29 +198,30 @@
         <p>Tu as un projet web ou tu veux juste échanger ? Je suis disponible et ouvert à toute collaboration. N'hésite pas à me contacter ! 😊</p>
 
         <!-- FORMULAIRE -->
-        <form class="contact-form" action="https://formspree.io/f/maqpodjn" method="POST">
+        <div class="contact-form">
           <div class="form-group">
             <label for="nom">Votre nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Ex: Jean Kouassi" required/>
+            <input type="text" id="nom" placeholder="Ex: Jean Kouassi"/>
           </div>
           <div class="form-group">
             <label for="email">Votre email</label>
-            <input type="email" id="email" name="email" placeholder="Ex: jean@gmail.com" required/>
+            <input type="email" id="email" placeholder="Ex: jean@gmail.com"/>
           </div>
           <div class="form-group">
             <label for="sujet">Sujet</label>
-            <input type="text" id="sujet" name="sujet" placeholder="Ex: Projet de site web" required/>
+            <input type="text" id="sujet" placeholder="Ex: Projet de site web"/>
           </div>
           <div class="form-group">
             <label for="message">Votre message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Décris ton projet ou ta demande..." required></textarea>
+            <textarea id="message" rows="5" placeholder="Décris ton projet ou ta demande..."></textarea>
           </div>
-          <button type="submit" class="btn-send">Envoyer le message 📨</button>
-        </form>
+          <button class="btn-send" id="btnEnvoyer">Envoyer le message 📨</button>
+          <div class="form-success" id="formSuccess">✅ Message envoyé ! Je te réponds très bientôt.</div>
+        </div>
 
         <!-- LIENS DIRECTS -->
         <div class="contact-links">
-          <a href="/cdn-cgi/l/email-protection#62161b010a0b1317070e030f03050b0722050f030b0e4c010d0f" class="c-link">📧 <span class="__cf_email__" data-cfemail="582c213b3031292d3d343935393f313d183f35393134763b3735">[email&#160;protected]</span></a>
+          <a href="mailto:tychiquelamagie@gmail.com" class="c-link">📧 tychiquelamagie@gmail.com</a>
           <a href="tel:+2250788890448" class="c-link">📞 07 88 89 04 48</a>
           <a href="https://wa.me/2250788890448" target="_blank" class="c-link">💬 WhatsApp</a>
         </div>
@@ -231,4 +232,9 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 <span>Tychique
+    <p>© 2026 <span>Tychique Emmanuel — Tico Tico</span> — Fait avec ❤️ en Côte d'Ivoire 🇨🇮</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
