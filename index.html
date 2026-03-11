@@ -198,26 +198,25 @@
         <p>Tu as un projet web ou tu veux juste échanger ? Je suis disponible et ouvert à toute collaboration. N'hésite pas à me contacter ! 😊</p>
 
         <!-- FORMULAIRE -->
-        <div class="contact-form">
+        <form class="contact-form" action="https://formspree.io/f/maqpodjn" method="POST">
           <div class="form-group">
             <label for="nom">Votre nom</label>
-            <input type="text" id="nom" placeholder="Ex: Jean Kouassi"/>
+            <input type="text" id="nom" name="nom" placeholder="Ex: Jean Kouassi" required/>
           </div>
           <div class="form-group">
             <label for="email">Votre email</label>
-            <input type="email" id="email" placeholder="Ex: jean@gmail.com"/>
+            <input type="email" id="email" name="email" placeholder="Ex: jean@gmail.com" required/>
           </div>
           <div class="form-group">
             <label for="sujet">Sujet</label>
-            <input type="text" id="sujet" placeholder="Ex: Projet de site web"/>
+            <input type="text" id="sujet" name="sujet" placeholder="Ex: Projet de site web" required/>
           </div>
           <div class="form-group">
             <label for="message">Votre message</label>
-            <textarea id="message" rows="5" placeholder="Décris ton projet ou ta demande..."></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Décris ton projet ou ta demande..." required></textarea>
           </div>
-          <button class="btn-send" id="btnEnvoyer">Envoyer le message 📨</button>
-          <div class="form-success" id="formSuccess">✅ Message envoyé ! Je te réponds très bientôt.</div>
-        </div>
+          <button type="submit" class="btn-send">Envoyer le message 📨</button>
+        </form>
 
         <!-- LIENS DIRECTS -->
         <div class="contact-links">
