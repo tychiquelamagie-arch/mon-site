@@ -1,4 +1,36 @@
-// Reveal on scroll
+// ── FORMULAIRE CONTACT ──
+const btnEnvoyer = document.getElementById('btnEnvoyer');
+const formSuccess = document.getElementById('formSuccess');
+
+btnEnvoyer.addEventListener('click', () => {
+  const nom     = document.getElementById('nom').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const sujet   = document.getElementById('sujet').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!nom || !email || !sujet || !message) {
+    alert('Merci de remplir tous les champs avant d\'envoyer !');
+    return;
+  }
+
+  // Ouvre le client email avec les infos pré-remplies
+  const mailto = `mailto:tychiquelamagie@gmail.com?subject=${encodeURIComponent(sujet + ' — de ' + nom)}&body=${encodeURIComponent('Nom : ' + nom + '\nEmail : ' + email + '\n\nMessage :\n' + message)}`;
+  window.location.href = mailto;
+
+  // Affiche le message de succès
+  formSuccess.style.display = 'block';
+
+  // Vide le formulaire
+  document.getElementById('nom').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('sujet').value = '';
+  document.getElementById('message').value = '';
+
+  // Cache le message après 5 secondes
+  setTimeout(() => { formSuccess.style.display = 'none'; }, 5000);
+});
+
+// ── REVEAL ON SCROLL ──
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -9,7 +41,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 reveals.forEach(el => observer.observe(el));
 
-// Nav active link highlight
+// ── NAV ACTIVE LINK ──
 const links = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   const pos = window.scrollY + 200;
