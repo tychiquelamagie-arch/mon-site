@@ -13,18 +13,24 @@ btnEnvoyer.addEventListener('click', () => {
     return;
   }
 
-  // Envoie le message via Formspree
   btnEnvoyer.textContent = 'Envoi en cours...';
   btnEnvoyer.disabled = true;
 
+  // Formspree nécessite FormData et non JSON
+  const formData = new FormData();
+  formData.append('name', nom);
+  formData.append('email', email);
+  formData.append('_subject', sujet);
+  formData.append('message', message);
+
   fetch('https://formspree.io/f/maqpodjn', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ nom, email, sujet, message })
+    body: formData,
+    headers: { 'Accept': 'application/json' }
   })
-  .then(res => {
-    if (res.ok) {
-      // Succès
+  .then(res => res.json())
+  .then(data => {
+    if (data.ok) {
       formSuccess.style.display = 'block';
       document.getElementById('nom').value = '';
       document.getElementById('email').value = '';
@@ -32,11 +38,11 @@ btnEnvoyer.addEventListener('click', () => {
       document.getElementById('message').value = '';
       setTimeout(() => { formSuccess.style.display = 'none'; }, 6000);
     } else {
-      alert('❌ Une erreur est survenue. Réessaie ou contacte-moi directement.');
+      alert('Erreur : ' + (data.error || 'Une erreur est survenue. Réessaie.'));
     }
   })
   .catch(() => {
-    alert('❌ Connexion impossible. Vérifie ta connexion internet.');
+    alert('Connexion impossible. Vérifie ta connexion internet.');
   })
   .finally(() => {
     btnEnvoyer.textContent = 'Envoyer le message 📨';
