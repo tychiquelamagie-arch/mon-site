@@ -1,1 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tychique Emmanuel — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav id="navbar">
+    <div class="nav-brand">
+      <img src="logo.png.png" alt="Logo" class="brand-logo">
+      <span>Portfolio</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero"       class="nav-a active">Accueil</a></li>
+      <li><a href="#about"      class="nav-a">À Propos</a></li>
+      <li><a href="#projects"   class="nav-a">Projets</a></li>
+      <li><a href="#skills"     class="nav-a">Compétences</a></li>
+      <li><a href="#ambitions"  class="nav-a">Ambitions</a></li>
+      <li><a href="#cv-section" class="nav-a" id="navCvLink">CV</a></li>
+      <li><a href="#contact"    class="nav-a">Contact</a></li>
+    </ul>
+    <div class="nav-btns">
+      <button class="btn-cv-outline" onclick="showImpossible()">
+        <i class="fa-regular fa-file-lines"></i> Mon CV
+      </button>
+      <a href="cv_tychique.pdf" download class="btn-cv-dl">
+        <i class="fa-solid fa-download"></i> Télécharger CV
+      </a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+
+    <div class="hero-left">
+      <div class="welcome-badge">
+        <span class="bdot"></span> ✨ BIENVENUE SUR MA PAGE ✨
+      </div>
+      <p class="greeting"><span class="wave">👋</span> Bonjour, moi c'est</p>
+      <h1 class="hero-name" id="heroName">
+        <span class="n1" id="nameFirst">Tychique</span>
+        <span class="n2" id="nameLast">Emmanuel</span>
+      </h1>
+      <div class="hero-role">
+        <span class="bracket">&lt;/&gt;</span>
+        <span id="typedText"></span><span class="tcursor">|</span>
+      </div>
+      <div class="hero-bio">
+        <div class="bio-bar"></div>
+        <p>Je suis <span class="hl-o">passionné par la technologie</span> et toujours motivé à
+        <span class="hl-g">apprendre</span>, à <span class="hl-c">développer mes compétences</span>
+        et à relever de nouveaux <strong>défis</strong> dans le domaine du
+        <span class="hl-o">numérique</span>.</p>
+      </div>
+      <div class="hero-tags">
+        <span class="htag"><i class="fa-solid fa-desktop"></i> Informatique</span>
+        <span class="htag"><i class="fa-solid fa-rocket"></i> Innovation</span>
+        <span class="htag"><i class="fa-solid fa-brain"></i> Apprentissage</span>
+        <span class="htag"><i class="fa-solid fa-bolt"></i> Défis</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="cta-primary">Voir mes projets <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="#contact"  class="cta-secondary">Me contacter</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="fbadge badge-live">
+        <span class="live-dot"></span>
+        <div><strong>Temps réel</strong><small>Live</small></div>
+      </div>
+
+      <div class="clock-wrap">
+        <svg id="clockSVG" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="glowH"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="glowM"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="glowS"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <circle cx="150" cy="150" r="145" fill="none" stroke="rgba(0,220,255,0.1)"  stroke-width="1"/>
+          <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(0,220,255,0.25)" stroke-width="1.5"/>
+          <circle cx="150" cy="150" r="125" fill="rgba(0,0,0,0.65)" stroke="rgba(0,220,255,0.5)" stroke-width="2"/>
+          <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255,140,0,0.35)" stroke-width="1.5" stroke-dasharray="4 12" id="rotRing"/>
+          <g id="ticks"></g>
+          <text x="150" y="30"  text-anchor="middle" class="cnum">12</text>
+          <text x="270" y="155" text-anchor="middle" class="cnum">3</text>
+          <text x="150" y="278" text-anchor="middle" class="cnum">6</text>
+          <text x="30"  y="155" text-anchor="middle" class="cnum">9</text>
+          <text x="225" y="65"  text-anchor="middle" class="cnum-s">1</text>
+          <text x="265" y="110" text-anchor="middle" class="cnum-s">2</text>
+          <text x="265" y="200" text-anchor="middle" class="cnum-s">4</text>
+          <text x="225" y="245" text-anchor="middle" class="cnum-s">5</text>
+          <text x="75"  y="245" text-anchor="middle" class="cnum-s">7</text>
+          <text x="35"  y="200" text-anchor="middle" class="cnum-s">8</text>
+          <text x="35"  y="110" text-anchor="middle" class="cnum-s">10</text>
+          <text x="75"  y="65"  text-anchor="middle" class="cnum-s">11</text>
+          <line id="hHand" x1="150" y1="150" x2="150" y2="85"  stroke="white"             stroke-width="4"   stroke-linecap="round" filter="url(#glowH)"/>
+          <line id="mHand" x1="150" y1="150" x2="150" y2="55"  stroke="rgba(0,220,255,1)" stroke-width="2.5" stroke-linecap="round" filter="url(#glowM)"/>
+          <line id="sHand" x1="150" y1="162" x2="150" y2="42"  stroke="#FF8C00"           stroke-width="1.5" stroke-linecap="round" filter="url(#glowS)"/>
+          <circle cx="150" cy="150" r="6" fill="rgba(0,220,255,0.9)"/>
+          <circle cx="150" cy="150" r="3" fill="white"/>
+        </svg>
+      </div>
+
+      <div class="fbadge badge-motive">
+        <span>🚀</span>
+        <div><strong>Motivé</strong><small>Toujours</small></div>
+      </div>
+
+      <div class="digiclock">
+        <div class="dtime" id="dtime">00:00:00</div>
+        <div class="ddate" id="ddate">CHARGEMENT...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ À PROPOS ══ -->
+  <section id="about">
+    <div class="sec-header reveal">
+      <h2><span class="wh">À</span> <span class="wc">Propos</span> de moi</h2>
+      <div class="sec-sub"><span class="line-o"></span> À PROPOS</div>
+    </div>
+    <div class="qui-wrap reveal">
+      <div class="qui-balls" id="quiBalls"></div>
+      <h3 class="qui" id="quiTitle">Qui suis-je ?</h3>
+    </div>
+    <div class="about-layout">
+      <div class="about-text reveal">
+        <p>Je m'appelle <span class="hl-o">Tychique Emmanuel</span>, surnommé <span class="hl-c">Tico Tico</span>.
+        Je suis un étudiant ivoirien actuellement en Licence de Sciences Informatiques à l'Université Internationale de Cocody (UIC).
+        Depuis toujours, je suis passionné par les nouvelles technologies, la programmation et les systèmes informatiques.</p>
+        <p>Au cours de ma formation universitaire, j'ai développé des compétences en programmation,
+        bases de données et développement de solutions informatiques. Je suis une personne
+        motivée, curieuse et déterminée à apprendre.</p>
+        <p>Mon objectif est de devenir un ingénieur informatique compétent, capable de créer des
+        solutions technologiques innovantes et utiles pour l'Afrique et le monde. 🌍</p>
+        <div class="about-tags">
+          <span class="atag"><i class="fa-solid fa-laptop-code"></i> Dév Web (débutant)</span>
+          <span class="atag"><i class="fa-solid fa-database"></i> Bases de données</span>
+          <span class="atag"><i class="fa-solid fa-microchip"></i> Sciences Informatiques</span>
+        </div>
+      </div>
+      <div class="about-card reveal">
+        <div class="info-row"><span class="ikey">Nom</span><span class="ival">Tychique Emmanuel</span></div>
+        <div class="info-row"><span class="ikey">Surnom</span><span class="ival hl-o">Tico Tico</span></div>
+        <div class="info-row"><span class="ikey">Niveau</span><span class="ival hl-c">Licence — Sciences Info</span></div>
+        <div class="info-row"><span class="ikey">Statut</span><span class="ival"><span class="badge-dispo">Disponible</span></span></div>
+        <div class="info-row"><span class="ikey">Nationalité</span><span class="ival">Ivoirien 🇨🇮</span></div>
+        <div class="info-row"><span class="ikey">Localisation</span><span class="ival">Côte d'Ivoire 🌍</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROJETS ══ -->
+  <section id="projects">
+    <div class="section-balls" id="projectsBalls"></div>
+    <div class="sec-header reveal">
+      <h2><span class="wh">Mes</span> <span class="wc">Projets</span></h2>
+      <div class="sec-sub"><span class="line-o"></span> Réalisations récentes</div>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card reveal">
+        <div class="proj-thumb thumb-blue"><i class="fa-solid fa-globe proj-icon" style="color:#00DCFF"></i></div>
+        <div class="proj-body">
+          <span class="proj-tag tag-web">WEB</span>
+          <h3>Site E-commerce</h3>
+          <p>Plateforme de vente en ligne avec panier, paiement et gestion des commandes.</p>
+          <div class="proj-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" style="animation-delay:.15s">
+        <div class="proj-thumb thumb-purple"><i class="fa-solid fa-mobile-screen proj-icon" style="color:#A855F7"></i></div>
+        <div class="proj-body">
+          <span class="proj-tag tag-mobile">MOBILE</span>
+          <h3>App de Gestion</h3>
+          <p>Application mobile de gestion des tâches avec notifications en temps réel.</p>
+          <div class="proj-stack"><span>Python</span><span>SQL</span><span>GUI</span></div>
+        </div>
+      </div>
+      <div class="proj-card reveal" style="animation-delay:.3s">
+        <div class="proj-thumb thumb-green"><i class="fa-solid fa-robot proj-icon" style="color:#00FF88"></i></div>
+        <div class="proj-body">
+          <span class="proj-tag tag-ia">IA</span>
+          <h3>Chatbot Intelligent</h3>
+          <p>Assistant virtuel basé sur l'IA pour répondre aux questions des utilisateurs.</p>
+          <div class="proj-stack"><span>Python</span><span>NLP</span><span>API</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COMPÉTENCES ══ -->
+  <section id="skills">
+    <div class="section-balls" id="skillsBalls"></div>
+    <div class="sec-header reveal">
+      <h2><span class="wh">Mes</span> <span class="wc">Compétences</span></h2>
+      <div class="sec-sub"><span class="line-o"></span> Technologies maîtrisées &amp; qualités personnelles</div>
+    </div>
+    <div class="skills-desc reveal">
+      <p>Je possède des <span class="hl-c">compétences en programmation junior</span>, notamment en
+      <span class="hl-o">Python</span>, <span class="hl-o">Java</span> et <span class="hl-o">JavaScript</span>.
+      J'ai également des connaissances en <span class="hl-c">développement web</span> avec HTML, CSS et JavaScript,
+      ainsi qu'en <span class="hl-c">gestion de bases de données</span> avec MySQL.</p>
+      <p>Je maîtrise <span class="hl-c">Git et GitHub</span> pour la gestion de versions,
+      et j'ai une bonne connaissance des <span class="hl-p">systèmes Windows</span>.
+      Je maîtrise aussi les <span class="hl-o">outils bureautiques</span> et je possède de bonnes
+      <span class="hl-c">compétences personnelles</span> : travail en équipe, organisation, capacité d'analyse.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="sk-title"><i class="fa-solid fa-laptop-code"></i> PROGRAMMATION (JUNIOR)</div>
+        <div class="sk-bars">
+          <div class="sb-row"><span>Python</span><div class="sb-track"><div class="sb-fill" data-w="70" style="--c:#FF8C00"></div></div><span class="sb-pct">70%</span></div>
+          <div class="sb-row"><span>Java</span><div class="sb-track"><div class="sb-fill" data-w="65" style="--c:#FF8C00"></div></div><span class="sb-pct">65%</span></div>
+          <div class="sb-row"><span>JavaScript</span><div class="sb-track"><div class="sb-fill" data-w="70" style="--c:#FF8C00"></div></div><span class="sb-pct">70%</span></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-title"><i class="fa-brands fa-html5"></i> DÉVELOPPEMENT WEB</div>
+        <div class="sk-bars">
+          <div class="sb-row"><span>HTML</span><div class="sb-track"><div class="sb-fill" data-w="85" style="--c:#00DCFF"></div></div><span class="sb-pct">85%</span></div>
+          <div class="sb-row"><span>CSS</span><div class="sb-track"><div class="sb-fill" data-w="80" style="--c:#00DCFF"></div></div><span class="sb-pct">80%</span></div>
+          <div class="sb-row"><span>JavaScript (Web)</span><div class="sb-track"><div class="sb-fill" data-w="70" style="--c:#00DCFF"></div></div><span class="sb-pct">70%</span></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-title"><i class="fa-solid fa-database"></i> BASES DE DONNÉES &amp; OUTILS</div>
+        <div class="sk-bars">
+          <div class="sb-row"><span>MySQL</span><div class="sb-track"><div class="sb-fill" data-w="70" style="--c:#A855F7"></div></div><span class="sb-pct">70%</span></div>
+          <div class="sb-row"><span>Git &amp; GitHub</span><div class="sb-track"><div class="sb-fill" data-w="75" style="--c:#A855F7"></div></div><span class="sb-pct">75%</span></div>
+          <div class="sb-row"><span>Windows</span><div class="sb-track"><div class="sb-fill" data-w="85" style="--c:#A855F7"></div></div><span class="sb-pct">85%</span></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-title"><i class="fa-solid fa-file-word"></i> OUTILS BUREAUTIQUES</div>
+        <div class="sk-bars">
+          <div class="sb-row"><span>Microsoft Word</span><div class="sb-track"><div class="sb-fill" data-w="85" style="--c:#00FF88"></div></div><span class="sb-pct">85%</span></div>
+          <div class="sb-row"><span>PowerPoint</span><div class="sb-track"><div class="sb-fill" data-w="80" style="--c:#00FF88"></div></div><span class="sb-pct">80%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ AMBITIONS ══ -->
+  <section id="ambitions" style="background-image:url('img-ambitions.jpg');background-size:cover;background-position:center;">
+    <div class="section-balls" id="ambitionsBalls"></div>
+    <div class="sec-header reveal">
+      <h2><span class="wh">Mes</span> <span class="wc">Ambitions</span></h2>
+      <div class="sec-sub"><span class="line-o"></span> Objectifs &amp; Réalisations</div>
+    </div>
+    <div class="ambitions-content reveal">
+      <div class="ambition-text">
+        <div class="ambition-icon-large"><i class="fa-solid fa-bullseye"></i></div>
+        <div class="ambition-text-content">
+          <h3 class="ambition-title">Mes objectifs</h3>
+          <p class="ambition-paragraph">En tant qu'étudiant en informatique, mes ambitions de réalisations sont de <span class="hl-c">concevoir et développer des projets concrets</span> qui me permettront de mettre en pratique mes connaissances. Je souhaite créer des applications simples, comme un <span class="hl-o">site web</span>, une <span class="hl-o">application mobile</span> ou un <span class="hl-o">programme utile</span>, afin de renforcer mes compétences techniques.</p>
+          <p class="ambition-paragraph">Je vise également à <span class="hl-c">participer à des projets collaboratifs</span>, travailler en équipe et contribuer à des <span class="hl-g">solutions innovantes</span>.</p>
+        </div>
+      </div>
+      <div class="ambition-goals">
+        <div class="goal-card reveal">
+          <div class="goal-icon"><i class="fa-solid fa-globe"></i></div>
+          <h4>Créer des sites web</h4>
+          <p>Développer des sites modernes et responsives</p>
+        </div>
+        <div class="goal-card reveal" style="animation-delay:.1s">
+          <div class="goal-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h4>Applications mobiles</h4>
+          <p>Concevoir des apps utiles et intuitives</p>
+        </div>
+        <div class="goal-card reveal" style="animation-delay:.2s">
+          <div class="goal-icon"><i class="fa-solid fa-code"></i></div>
+          <h4>Programmes utiles</h4>
+          <p>Créer des outils qui résolvent des problèmes</p>
+        </div>
+        <div class="goal-card reveal" style="animation-delay:.3s">
+          <div class="goal-icon"><i class="fa-solid fa-people-group"></i></div>
+          <h4>Projets collaboratifs</h4>
+          <p>Travailler en équipe sur des solutions innovantes</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CV ══ -->
+  <section id="cv-section">
+    <div class="section-balls" id="cvBalls"></div>
+    <div class="sec-header reveal">
+      <h2><span class="wh">Mon</span> <span class="wc">CV</span></h2>
+      <div class="sec-sub"><span class="line-o"></span> Curriculum Vitae</div>
+    </div>
+    <div class="impossible-msg" id="impossibleMsg" style="display:none">
+      <div class="imp-inner">
+        <span class="imp-icon">🚫</span>
+        <h3>Impossible</h3>
+        <p>Le téléchargement direct n'est pas disponible.<br/>Consulte mon CV ci-dessous ou contacte-moi.</p>
+        <button onclick="closeImpossible()">Fermer</button>
+      </div>
+    </div>
+    <div class="cv-embed-wrap reveal">
+      <div class="cv-embed-header">
+        <div class="cv-embed-dots"><span></span><span></span><span></span></div>
+        <span class="cv-embed-title"><i class="fa-regular fa-file-lines"></i> CV_Tychique_Emmanuel.pdf</span>
+        <a href="cv_tychique.pdf" download class="cv-embed-dl"><i class="fa-solid fa-download"></i> Télécharger</a>
+      </div>
+      <iframe src="cv_tychique.pdf" class="cv-iframe" title="CV Tychique Emmanuel"></iframe>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact">
+    <div class="section-balls" id="contactBalls"></div>
+    <div class="contact-badge reveal"><span class="live-dot"></span> DISPONIBLE POUR COLLABORER</div>
+    <h2 class="contact-title reveal">Travaillons <span class="wc2">Ensemble</span></h2>
+    <p class="contact-sub reveal">Tu as un projet web ou tu veux juste échanger ? Je suis disponible et ouvert à toute collaboration. N'hésite pas à me contacter ! 😊</p>
+    <div class="alert-box" id="alertBox" style="display:none"></div>
+    <div class="contact-form-wrap reveal">
+      <div class="form-grid">
+        <div class="fgroup">
+          <label><i class="fa-solid fa-user"></i> VOTRE NOM</label>
+          <input type="text" id="fName" placeholder="Ex: Jean Kouassi"/>
+        </div>
+        <div class="fgroup">
+          <label><i class="fa-solid fa-envelope"></i> VOTRE EMAIL</label>
+          <input type="email" id="fEmail" placeholder="Ex: jean@gmail.com"/>
+        </div>
+      </div>
+      <div class="fgroup">
+        <label><i class="fa-solid fa-lightbulb"></i> SUJET</label>
+        <input type="text" id="fSubject" placeholder="Ex: Projet de site web"/>
+      </div>
+      <div class="fgroup">
+        <label><i class="fa-solid fa-message"></i> VOTRE MESSAGE</label>
+        <textarea id="fMessage" rows="5" placeholder="Décris ton projet ou ta demande..."></textarea>
+      </div>
+      <div class="contact-choice">
+        <p class="choice-label"><i class="fa-solid fa-hand-pointer"></i> Choisis comment envoyer ton message :</p>
+        <div class="choice-buttons">
+          <button type="button" class="btn-choice btn-choice-email" id="btnChoiceEmail" onclick="prepareSend('email')">
+            <i class="fa-solid fa-envelope"></i> Envoyer par Email
+          </button>
+          <button type="button" class="btn-choice btn-choice-wa" id="btnChoiceWa" onclick="prepareSend('whatsapp')">
+            <i class="fa-brands fa-whatsapp"></i> Envoyer par WhatsApp
+          </button>
+        </div>
+      </div>
+      <button class="btn-send" id="btnSend" onclick="sendMessage()">
+        <i class="fa-solid fa-paper-plane" id="btnIcon"></i>
+        <span id="btnText">Choisis d'abord Email ou WhatsApp</span>
+      </button>
+      <div class="contact-links reveal">
+        <a href="mailto:tychiquelamagie@gmail.com" class="clink clink-email"><i class="fa-solid fa-envelope"></i> tychiquelamagie@gmail.com</a>
+        <a href="tel:+2250788890448" class="clink clink-phone"><i class="fa-solid fa-phone"></i> 07 88 89 04 48</a>
+        <a href="https://wa.me/2250788890448" target="_blank" class="clink clink-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <p>© 2025 <span class="hl-c">Tychique Emmanuel</span> — Tous droits réservés</p>
+    <p class="footer-sub">Conçu &amp; développé avec ❤️ — Cocody, Abidjan</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="Script.js"></script>
+</body>
+</html>
