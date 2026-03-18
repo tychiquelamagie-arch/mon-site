@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet" href="extra.css"/>
 </head>
 <body>
 
@@ -89,24 +88,14 @@
       <div class="clock-wrap">
         <svg id="clockSVG" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <filter id="glowH">
-              <feGaussianBlur stdDeviation="3" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glowM">
-              <feGaussianBlur stdDeviation="4" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="glowS">
-              <feGaussianBlur stdDeviation="5" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
+            <filter id="glowH"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="glowM"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="glowS"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
           <circle cx="150" cy="150" r="145" fill="none" stroke="rgba(0,220,255,0.1)"  stroke-width="1"/>
           <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(0,220,255,0.25)" stroke-width="1.5"/>
           <circle cx="150" cy="150" r="125" fill="rgba(0,0,0,0.65)" stroke="rgba(0,220,255,0.5)" stroke-width="2"/>
-          <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255,140,0,0.35)"
-                  stroke-width="1.5" stroke-dasharray="4 12" id="rotRing"/>
+          <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255,140,0,0.35)" stroke-width="1.5" stroke-dasharray="4 12" id="rotRing"/>
           <g id="ticks"></g>
           <text x="150" y="30"  text-anchor="middle" class="cnum">12</text>
           <text x="270" y="155" text-anchor="middle" class="cnum">3</text>
@@ -179,15 +168,14 @@
 
   <!-- ══ PROJETS ══ -->
   <section id="projects">
+    <div class="section-balls" id="projectsBalls"></div>
     <div class="sec-header reveal">
       <h2><span class="wh">Mes</span> <span class="wc">Projets</span></h2>
       <div class="sec-sub"><span class="line-o"></span> Réalisations récentes</div>
     </div>
     <div class="projects-grid">
       <div class="proj-card reveal">
-        <div class="proj-thumb thumb-blue">
-          <i class="fa-solid fa-globe proj-icon" style="color:#00DCFF"></i>
-        </div>
+        <div class="proj-thumb thumb-blue"><i class="fa-solid fa-globe proj-icon" style="color:#00DCFF"></i></div>
         <div class="proj-body">
           <span class="proj-tag tag-web">WEB</span>
           <h3>Site E-commerce</h3>
@@ -196,9 +184,7 @@
         </div>
       </div>
       <div class="proj-card reveal" style="animation-delay:.15s">
-        <div class="proj-thumb thumb-purple">
-          <i class="fa-solid fa-mobile-screen proj-icon" style="color:#A855F7"></i>
-        </div>
+        <div class="proj-thumb thumb-purple"><i class="fa-solid fa-mobile-screen proj-icon" style="color:#A855F7"></i></div>
         <div class="proj-body">
           <span class="proj-tag tag-mobile">MOBILE</span>
           <h3>App de Gestion</h3>
@@ -207,9 +193,7 @@
         </div>
       </div>
       <div class="proj-card reveal" style="animation-delay:.3s">
-        <div class="proj-thumb thumb-green">
-          <i class="fa-solid fa-robot proj-icon" style="color:#00FF88"></i>
-        </div>
+        <div class="proj-thumb thumb-green"><i class="fa-solid fa-robot proj-icon" style="color:#00FF88"></i></div>
         <div class="proj-body">
           <span class="proj-tag tag-ia">IA</span>
           <h3>Chatbot Intelligent</h3>
@@ -273,23 +257,19 @@
   </section>
 
   <!-- ══ AMBITIONS ══ -->
-  <section id="ambitions" style="background-image:url('img-ambitions.avif');background-size:cover;background-position:center;background-attachment:fixed;">
+  <section id="ambitions" style="background-image:url('img-ambitions.jpg');background-size:cover;background-position:center;">
+    <div class="section-balls" id="ambitionsBalls"></div>
     <div class="sec-header reveal">
       <h2><span class="wh">Mes</span> <span class="wc">Ambitions</span></h2>
-      <div class="sec-sub"><span class="line-o"></span> Objectifs & Réalisations</div>
+      <div class="sec-sub"><span class="line-o"></span> Objectifs &amp; Réalisations</div>
     </div>
-    <div class="ambitions-balls" id="ambitionsBalls"></div>
     <div class="ambitions-content reveal">
       <div class="ambition-text">
         <div class="ambition-icon-large"><i class="fa-solid fa-bullseye"></i></div>
         <div class="ambition-text-content">
           <h3 class="ambition-title">Mes objectifs</h3>
-          <p class="ambition-paragraph">
-            En tant qu'étudiant en informatique, mes ambitions de réalisations sont de <span class="hl-c">concevoir et développer des projets concrets</span> qui me permettront de mettre en pratique mes connaissances. Je souhaite créer des applications simples, comme un <span class="hl-o">site web</span>, une <span class="hl-o">application mobile</span> ou un <span class="hl-o">programme utile</span>, afin de renforcer mes compétences techniques.
-          </p>
-          <p class="ambition-paragraph">
-            Je vise également à <span class="hl-c">participer à des projets collaboratifs</span>, travailler en équipe et contribuer à des <span class="hl-g">solutions innovantes</span>.
-          </p>
+          <p class="ambition-paragraph">En tant qu'étudiant en informatique, mes ambitions de réalisations sont de <span class="hl-c">concevoir et développer des projets concrets</span> qui me permettront de mettre en pratique mes connaissances. Je souhaite créer des applications simples, comme un <span class="hl-o">site web</span>, une <span class="hl-o">application mobile</span> ou un <span class="hl-o">programme utile</span>, afin de renforcer mes compétences techniques.</p>
+          <p class="ambition-paragraph">Je vise également à <span class="hl-c">participer à des projets collaboratifs</span>, travailler en équipe et contribuer à des <span class="hl-g">solutions innovantes</span>.</p>
         </div>
       </div>
       <div class="ambition-goals">
@@ -336,9 +316,7 @@
       <div class="cv-embed-header">
         <div class="cv-embed-dots"><span></span><span></span><span></span></div>
         <span class="cv-embed-title"><i class="fa-regular fa-file-lines"></i> CV_Tychique_Emmanuel.pdf</span>
-        <a href="cv_tychique.pdf" download class="cv-embed-dl">
-          <i class="fa-solid fa-download"></i> Télécharger
-        </a>
+        <a href="cv_tychique.pdf" download class="cv-embed-dl"><i class="fa-solid fa-download"></i> Télécharger</a>
       </div>
       <iframe src="cv_tychique.pdf" class="cv-iframe" title="CV Tychique Emmanuel"></iframe>
     </div>
@@ -347,9 +325,7 @@
   <!-- ══ CONTACT ══ -->
   <section id="contact">
     <div class="section-balls" id="contactBalls"></div>
-    <div class="contact-badge reveal">
-      <span class="live-dot"></span> DISPONIBLE POUR COLLABORER
-    </div>
+    <div class="contact-badge reveal"><span class="live-dot"></span> DISPONIBLE POUR COLLABORER</div>
     <h2 class="contact-title reveal">Travaillons <span class="wc2">Ensemble</span></h2>
     <p class="contact-sub reveal">Tu as un projet web ou tu veux juste échanger ? Je suis disponible et ouvert à toute collaboration. N'hésite pas à me contacter ! 😊</p>
     <div class="alert-box" id="alertBox" style="display:none"></div>
@@ -388,15 +364,9 @@
         <span id="btnText">Choisis d'abord Email ou WhatsApp</span>
       </button>
       <div class="contact-links reveal">
-        <a href="mailto:tychiquelamagie@gmail.com" class="clink clink-email">
-          <i class="fa-solid fa-envelope"></i> tychiquelamagie@gmail.com
-        </a>
-        <a href="tel:+2250788890448" class="clink clink-phone">
-          <i class="fa-solid fa-phone"></i> 07 88 89 04 48
-        </a>
-        <a href="https://wa.me/2250788890448" target="_blank" class="clink clink-wa">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
+        <a href="mailto:tychiquelamagie@gmail.com" class="clink clink-email"><i class="fa-solid fa-envelope"></i> tychiquelamagie@gmail.com</a>
+        <a href="tel:+2250788890448" class="clink clink-phone"><i class="fa-solid fa-phone"></i> 07 88 89 04 48</a>
+        <a href="https://wa.me/2250788890448" target="_blank" class="clink clink-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
       </div>
     </div>
   </section>
@@ -408,7 +378,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="script.js"></script>
-  <script src="extra.js"></script>
+  <script src="Script.js"></script>
 </body>
 </html>
